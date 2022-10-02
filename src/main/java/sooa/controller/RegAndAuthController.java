@@ -1,74 +1,60 @@
 package sooa.controller;
 
-import graphql.GraphQLContext;
-import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import sooa.domain.academic_records_ms.AcademicInfo;
 import sooa.domain.reg_and_auth_ms.User;
+import sooa.process.AuthAndRegProcess;
 import sooa.service.RegAndAuthService;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.util.List;
 
-@Controller
+@RestController
 public class RegAndAuthController {
 
     @Autowired
-    private RegAndAuthService regAndAuthService;
+    private AuthAndRegProcess authAndRegProcess;
 
-    @Autowired
-    private HttpServletResponse response;
-
-
-
-    public RegAndAuthController(RegAndAuthService regAndAuthService) {
-        this.regAndAuthService = regAndAuthService;
+    public RegAndAuthController(AuthAndRegProcess authAndRegProcess) {
+        this.authAndRegProcess = authAndRegProcess;
     }
 
-
-    @QueryMapping
-    public String login(@Argument String username, @Argument  String password) {
-
-        Cookie cookie = new Cookie("JSESSIONID", "Jovan");
-        
-        //add a cookie to response
-        response.addCookie(cookie);
-        return regAndAuthService.auth(username, password);
+    @PostMapping(path = "/auth", consumes = "multipart/form-data", produces = "application/json")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public String loginForm(@RequestPart String username, @RequestPart String password){
+        return authAndRegProcess.auth(username, password);
     }
 
     @QueryMapping
     public List<User> findAll() {
-        return regAndAuthService.getUsers();
+        return authAndRegProcess.getAllUsers();
     }
 
     @QueryMapping
     public User findOne(@Argument Long id) {
-        return regAndAuthService.getUser(id);
+        return authAndRegProcess.getUser(id);
     }
 
     @MutationMapping
-    public User createUser(@Argument("input") User user) throws ParseException {
+    public User createUser(@Argument("userInput") User user,
+                           @Argument("academicInfoInput") AcademicInfo academicInfo) throws ParseException {
 
-        System.out.println(user);
-
-        return regAndAuthService.createUser(user);
+        return authAndRegProcess.createUser(user, academicInfo);
     }
 
     @MutationMapping
     public User updateUser(@Argument Long id, @Argument("input") User user) {
-
-        return regAndAuthService.updateUser(id, user);
+        return authAndRegProcess.updateUser(id, user);
     }
 
     @MutationMapping
     public void deleteUser(@Argument Long id) {
-        regAndAuthService.deleteUser(id);
+        authAndRegProcess.deleteUser(id);
     }
 
 }

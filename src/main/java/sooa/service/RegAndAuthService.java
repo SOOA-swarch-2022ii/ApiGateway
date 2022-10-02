@@ -27,6 +27,10 @@ public class RegAndAuthService {
         this.rest = restTemplate;
     }
 
+    public User getCurrentUser(){
+        return rest.getForObject("http://localhost:8080/register/user",
+                User.class);
+    }
 
     public User getUser(Long id) {
         return rest.getForObject("http://localhost:8080/register/user/{id}",
@@ -34,6 +38,7 @@ public class RegAndAuthService {
     }
 
     public List<User> getUsers() {
+        System.out.println(getCurrentUser());
         return rest.getForObject("http://localhost:8080/register/users",
                 List.class);
     }
@@ -60,7 +65,7 @@ public class RegAndAuthService {
     }
 
     public String auth(String username, String password) {
-/*
+
         final HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
 
         final CloseableHttpClient httpClient = HttpClientBuilder.create()
@@ -69,7 +74,7 @@ public class RegAndAuthService {
 
         factory.setHttpClient(httpClient);
 
-        rest.setRequestFactory(factory);*/
+        rest.setRequestFactory(factory);
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -81,11 +86,6 @@ public class RegAndAuthService {
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
         ResponseEntity<String> response = rest.postForEntity(
                 "http://localhost:8080/auth", request , String.class);
-
-
-        System.out.println(response);
-        System.out.println(response.getHeaders());
-        System.out.println(response.getHeaders().get("Set-Cookie"));
 
         return response.getBody();
     }

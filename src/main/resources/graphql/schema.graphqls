@@ -19,6 +19,12 @@ input UserInput {
 
 }
 
+input AcademicInfoInput {
+    campus: String,
+    faculty: String,
+    career: String
+}
+
 type User {
     id: ID!
     role: String
@@ -35,11 +41,10 @@ type User {
 type Query {
     findAll: [User]
     findOne(id: ID!): User
-    login(username: String, password: String): String
 }
 
 type Mutation {
-    createUser(input: UserInput): User
+    createUser(userInput: UserInput, academicInfoInput: AcademicInfoInput): User
     updateUser(id: ID!, input: UserInput): User
     deleteUser(id: ID!): User
 }
