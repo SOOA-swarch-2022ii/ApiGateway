@@ -38,13 +38,43 @@ type User {
     email: String
 }
 
+type Career {
+    _id : Int   
+    academic_level : String
+    name : String
+    SNIES_code : Int   
+    credits : Int   
+    departament : String
+    faculty : String
+    campus : String
+    pensum : [String] 
+}
+
+input CareerInput{
+    _id : Int   
+    academic_level : String
+    name : String
+    SNIES_code : Int   
+    credits : Int   
+    departament : String
+    faculty : String
+    campus : String
+    pensum : [String] 
+}
+
 type Query {
     findAll: [User]
     findOne(id: ID!): User
+    getCareers: [Career]
+    getCareer(_id : Int): Career
 }
 
 type Mutation {
     createUser(userInput: UserInput, academicInfoInput: AcademicInfoInput): User
     updateUser(id: ID!, input: UserInput): User
     deleteUser(id: ID!): User
+    createCareer(input: CareerInput): Career
+    updateDeleteCareer(_id : Int, subject: String): Career
+    updateAddCareer(_id : Int, subject: String): Career
+    deleteCareer(_id: Int): Career
 }
