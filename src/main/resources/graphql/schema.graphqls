@@ -19,9 +19,29 @@ input UserInput {
 
 }
 
-input AcademicInfoInput {
-    campus: String,
-    faculty: String,
+input AcademicRecordInfoInput {
+
+    student_id: String
+    subjects_pending : String
+    subjects_record : String
+    papa : Float
+    papi : Float
+    status : Boolean
+    faculty: String
+    campus: String
+    career: String
+}
+
+input AcademicRecordInfo {
+    id: ID!
+    student_id: String
+    subjects_pending : String
+    subjects_record : String
+    papa : Float
+    papi : Float
+    status : Boolean
+    faculty: String
+    campus: String
     career: String
 }
 
@@ -41,10 +61,12 @@ type User {
 type Query {
     findAll: [User]
     findOne(id: ID!): User
+    findAll: [AcademicRecordInfo]
+    findOne(student_id: String): AcademicRecordInfo
 }
 
 type Mutation {
-    createUser(userInput: UserInput, academicInfoInput: AcademicInfoInput): User
+    createUser(userInput: UserInput, academicInfoInput: AcademicRecordInfoInput): User
     updateUser(id: ID!, input: UserInput): User
     deleteUser(id: ID!): User
 }

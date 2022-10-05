@@ -5,21 +5,24 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import sooa.domain.academic_record_ms.AcademicRecordInfo;
 import sooa.domain.reg_and_auth_ms.User;
 import sooa.process.AuthAndRegProcess;
-import sooa.domain.academic_record_ms.AcademicRecordInfo;
 
 import java.text.ParseException;
 import java.util.List;
 
 @RestController
-public class RegAndAuthController {
+public class AcademicRecordController {
 
     @Autowired
     private AuthAndRegProcess authAndRegProcess;
 
-    public RegAndAuthController(AuthAndRegProcess authAndRegProcess) {
+    public AcademicRecordController(AuthAndRegProcess authAndRegProcess) {
         this.authAndRegProcess = authAndRegProcess;
     }
 

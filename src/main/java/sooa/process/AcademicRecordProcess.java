@@ -10,7 +10,7 @@ import sooa.service.RegAndAuthService;
 import java.util.List;
 
 @Component
-public class AuthAndRegProcess {
+public class AcademicRecordProcess {
 
     @Autowired
     private RegAndAuthService regAndAuthService;
@@ -18,7 +18,7 @@ public class AuthAndRegProcess {
     @Autowired
     private AcademicRecordService academicRecordService;
 
-    public AuthAndRegProcess(RegAndAuthService regAndAuthService) {
+    public AcademicRecordProcess(RegAndAuthService regAndAuthService) {
         this.regAndAuthService = regAndAuthService;
     }
 
