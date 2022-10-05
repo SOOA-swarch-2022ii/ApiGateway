@@ -62,11 +62,25 @@ input CareerInput{
     pensum : [String] 
 }
 
+type StudentRecord {
+    _id : String 
+    student : String 
+    grades : [Float]
+}
+
+type StudentsRecords {
+    _id : String
+    students_record: [StudentRecord]
+}
+
 type Query {
     findAll: [User]
     findOne(id: ID!): User
     getCareers: [Career]
     getCareer(_id : Int): Career
+    getGrade(id: String): StudentsRecords
+    getGradeCourse(subject: String, group: Int): StudentsRecords
+    getGrades: [StudentsRecords]
 }
 
 type Mutation {
@@ -77,4 +91,9 @@ type Mutation {
     updateDeleteCareer(_id : Int, subject: String): Career
     updateAddCareer(_id : Int, subject: String): Career
     deleteCareer(_id: Int): Career
+    updateGradeId(id: String, student: String, grade: Float): StudentRecord
+    updateGradeCourse(subject: String, group: Int, student: String, grade: Float): StudentRecord
+    deleteGradeId(id:String, student: String, grade: Float): StudentRecord
+    deleteGradeCourse(subject: String, group: Int, student: String, grade: Float): StudentRecord
+
 }
