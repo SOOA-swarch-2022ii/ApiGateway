@@ -40,6 +40,11 @@ public class RegAndAuthController {
         return authAndRegProcess.getUser(id);
     }
 
+    @QueryMapping
+    public User findOneByUsername(@Argument String username) {
+        return authAndRegProcess.getUserByUsername(username);
+    }
+
     @MutationMapping
     public User createUser(@Argument("userInput") User user,
                            @Argument("academicInfoInput") AcademicInfo academicInfo) throws ParseException {

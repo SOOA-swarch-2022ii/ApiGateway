@@ -37,6 +37,11 @@ public class RegAndAuthService {
                 User.class, id);
     }
 
+    public User getUserByUsername(String username) {
+        return rest.getForObject("http://localhost:8080/register/user/username/{username}",
+                User.class, username);
+    }
+
     public List<User> getUsers() {
         System.out.println(getCurrentUser());
         return rest.getForObject("http://localhost:8080/register/users",

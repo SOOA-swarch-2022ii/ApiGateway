@@ -8,6 +8,7 @@ import org.springframework.util.StreamUtils;
 import org.springframework.web.filter.GenericFilterBean;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
+import sooa.process.AuthAndRegProcess;
 import sooa.service.RegAndAuthService;
 
 import javax.servlet.FilterChain;
@@ -27,22 +28,23 @@ import java.util.Map;
 public class AuthFilter extends GenericFilterBean {
 
     @Autowired
-    private RegAndAuthService regAndAuthService;
+    private AuthAndRegProcess authAndRegProcess;
 
-    public AuthFilter(RegAndAuthService regAndAuthService) {
-        this.regAndAuthService = regAndAuthService;
+    public AuthFilter(AuthAndRegProcess authAndRegProcess) {
+        this.authAndRegProcess = authAndRegProcess;
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-      /*  HttpServletRequest request = (HttpServletRequest) servletRequest;
+    /*
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
         String content = request.getContentType();
         if(!content.contains("multipart"))
         {
-            if (regAndAuthService.getCurrentUser() == null)
+            if (authAndRegProcess.getCurrentUser() == null)
                 throw new ServletException();
-        }*/
+        }
+    */
         filterChain.doFilter(servletRequest, servletResponse);
     }
-
 }
