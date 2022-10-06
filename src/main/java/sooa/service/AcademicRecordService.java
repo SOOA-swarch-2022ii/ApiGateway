@@ -23,7 +23,7 @@ public class AcademicRecordService {
                 AcademicRecordInfo.class, student_id);
     }
 
-    public List<AcademicRecordInfo> getAllAcademicrecords() {
+    public List<AcademicRecordInfo> getAllAcademicRecords() {
         return rest.getForObject("http://localhost:4001/academic-record",
                 List.class);
     }

@@ -20,19 +20,12 @@ input UserInput {
 }
 
 input AcademicRecordInfoInput {
-
-    student_id: String
-    subjects_pending : String
-    subjects_record : String
-    papa : Float
-    papi : Float
-    status : Boolean
     faculty: String
     campus: String
     career: String
 }
 
-input AcademicRecordInfo {
+type AcademicRecordInfo {
     id: ID!
     student_id: String
     subjects_pending : String
@@ -47,6 +40,7 @@ input AcademicRecordInfo {
 
 type User {
     id: ID!
+    studentId: String
     role: String
     name: String
     phone: String
@@ -61,12 +55,15 @@ type User {
 type Query {
     findAll: [User]
     findOne(id: ID!): User
-    findAll: [AcademicRecordInfo]
-    findOne(student_id: String): AcademicRecordInfo
+    findAllAcademicRecords: [AcademicRecordInfo]
+    findAcademicRecord(student_id: String): AcademicRecordInfo
 }
 
+
 type Mutation {
-    createUser(userInput: UserInput, academicInfoInput: AcademicRecordInfoInput): User
+    createUser(userInput: UserInput, academicRecordInfoInput: AcademicRecordInfoInput): User
     updateUser(id: ID!, input: UserInput): User
     deleteUser(id: ID!): User
+    updateAcademicRecord(studentId: String): AcademicRecordInfo
+    deleteAcademicRecord(studentId: String): AcademicRecordInfo
 }

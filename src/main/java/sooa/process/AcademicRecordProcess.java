@@ -22,37 +22,26 @@ public class AcademicRecordProcess {
         this.regAndAuthService = regAndAuthService;
     }
 
-    public String auth(String userName, String password) {
-        return regAndAuthService.auth(userName, password);
-    }
-
     // USA DOS MS
-    public User createUser(User user, AcademicRecordInfo academicInfo) {
+    public AcademicRecordInfo createAcademicRecord(AcademicRecordInfo academicRecordInfo) {
 
-        User createdUser = regAndAuthService.createUser(user);
-
-        // Aqui va el codigo que agrega la información propia del rol
-        if (createdUser.getRole() == User.Role.ESTUDIANTE){
-          //
-        }
-
-        return createdUser;
+        return academicRecordService.createAcademicRecord(academicRecordInfo);
     }
 
-    public List<User> getAllUsers() {
-        return regAndAuthService.getUsers();
+    public List<AcademicRecordInfo> getAllAcademicRecords() {
+        return academicRecordService.getAllAcademicRecords();
     }
 
-    public User getUser(Long id) {
-        return regAndAuthService.getUser(id);
+    public AcademicRecordInfo getAcademicRecord(String student_id) {
+        return academicRecordService.getAcademicRecord(student_id);
     }
 
-    public User updateUser(Long id, User user) {
-        return regAndAuthService.updateUser(id, user);
+    public void updateAcademicRecord(String student_id) {
+        academicRecordService.updateAcademicRecord(student_id);
     }
 
-    public void deleteUser(Long id) {
-        regAndAuthService.deleteUser(id);
+    public void deleteAcademicRecord(String student_id) {
+        academicRecordService.deleteAcademicRecord(student_id);
     }
 
 }

@@ -41,9 +41,9 @@ public class RegAndAuthController {
 
     @MutationMapping
     public User createUser(@Argument("userInput") User user,
-                           @Argument("academicInfoInput") AcademicRecordInfo academicInfo) throws ParseException {
+                           @Argument("academicInfoInput") AcademicRecordInfo academicRecordInfo) throws ParseException {
 
-        return authAndRegProcess.createUser(user, academicInfo);
+        return authAndRegProcess.createUser(user, academicRecordInfo);
     }
 
     @MutationMapping

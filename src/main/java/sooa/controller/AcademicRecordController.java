@@ -4,14 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import sooa.domain.academic_record_ms.AcademicRecordInfo;
 import sooa.domain.reg_and_auth_ms.User;
-import sooa.process.AuthAndRegProcess;
+import sooa.process.AcademicRecordProcess;
 
 import java.text.ParseException;
 import java.util.List;
@@ -20,43 +16,30 @@ import java.util.List;
 public class AcademicRecordController {
 
     @Autowired
-    private AuthAndRegProcess authAndRegProcess;
+    private AcademicRecordProcess academicRecordProcess;
 
-    public AcademicRecordController(AuthAndRegProcess authAndRegProcess) {
-        this.authAndRegProcess = authAndRegProcess;
-    }
-
-    @PostMapping(path = "/auth", consumes = "multipart/form-data", produces = "application/json")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public String loginForm(@RequestPart String username, @RequestPart String password){
-        return authAndRegProcess.auth(username, password);
+    public AcademicRecordController(AcademicRecordProcess academicRecordProcess) {
+        this.academicRecordProcess = academicRecordProcess;
     }
 
     @QueryMapping
-    public List<User> findAll() {
-        return authAndRegProcess.getAllUsers();
+    public List<AcademicRecordInfo> findAllAcademicRecords() {
+        return academicRecordProcess.getAllAcademicRecords();
     }
 
     @QueryMapping
-    public User findOne(@Argument Long id) {
-        return authAndRegProcess.getUser(id);
+    public AcademicRecordInfo findAcademicRecord(@Argument String student_id) {
+        return academicRecordProcess.getAcademicRecord(student_id);
     }
 
     @MutationMapping
-    public User createUser(@Argument("userInput") User user,
-                           @Argument("academicInfoInput") AcademicRecordInfo academicInfo) throws ParseException {
-
-        return authAndRegProcess.createUser(user, academicInfo);
+    public void updateAcademicRecord(@Argument String student_id) {
+        academicRecordProcess.updateAcademicRecord(student_id);
     }
 
     @MutationMapping
-    public User updateUser(@Argument Long id, @Argument("input") User user) {
-        return authAndRegProcess.updateUser(id, user);
-    }
-
-    @MutationMapping
-    public void deleteUser(@Argument Long id) {
-        authAndRegProcess.deleteUser(id);
+    public void deleteAcademicRecord(@Argument String student_id) {
+        academicRecordProcess.deleteAcademicRecord(student_id);
     }
 
 }
