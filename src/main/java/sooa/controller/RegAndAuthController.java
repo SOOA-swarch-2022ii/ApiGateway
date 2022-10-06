@@ -6,10 +6,9 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import sooa.domain.academic_records_ms.AcademicInfo;
 import sooa.domain.reg_and_auth_ms.User;
 import sooa.process.AuthAndRegProcess;
-import sooa.service.RegAndAuthService;
+import sooa.domain.academic_record_ms.AcademicRecordInfo;
 
 import java.text.ParseException;
 import java.util.List;
@@ -42,9 +41,9 @@ public class RegAndAuthController {
 
     @MutationMapping
     public User createUser(@Argument("userInput") User user,
-                           @Argument("academicInfoInput") AcademicInfo academicInfo) throws ParseException {
+                           @Argument("academicInfoInput") AcademicRecordInfo academicRecordInfo) throws ParseException {
 
-        return authAndRegProcess.createUser(user, academicInfo);
+        return authAndRegProcess.createUser(user, academicRecordInfo);
     }
 
     @MutationMapping
