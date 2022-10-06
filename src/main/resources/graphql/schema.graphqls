@@ -41,6 +41,7 @@ type User {
 type Query {
     findAll: [User]
     findOne(id: ID!): User
+    findOneByUsername(username: String!): User
 }
 
 type Mutation {
