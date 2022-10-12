@@ -87,6 +87,36 @@ type StudentsRecords {
     students_record: [StudentRecord]
 }
 
+input RegisterStudentCourse {
+    student_id: String
+    course_id: String
+}
+
+type Schedule{
+    day: String;
+    start_h: String;
+    end_h: String;
+    location: String;
+}
+
+type StudentRecord{
+    student: String;
+    grades: [Number];
+}
+
+type Course {
+    id: String   
+    subject: String
+    academic_semester: String
+    schedule: [Schedule] 
+    start_date: String   
+    end_date: String
+    places: Number
+    group_number: Number
+    professors: [String]
+    students_record: [StudentRecord]
+}
+
 type Query {
     findAll: [User]
     findOne(id: ID!): User
@@ -97,6 +127,9 @@ type Query {
     getGrades: [StudentsRecords]
     findAllAcademicRecords: [AcademicRecordInfo]
     findAcademicRecord(student_id: String): AcademicRecordInfo
+
+    findOneCourse(course_id: String): Course
+    findCoursesByStudent(student_id: String): [Course]
 }
 
 
@@ -104,6 +137,7 @@ type Mutation {
     createUser(userInput: UserInput, academicRecordInfoInput: AcademicRecordInfoInput): User
     updateUser(id: ID!, input: UserInput): User
     deleteUser(id: ID!): User
+
     createCareer(input: CareerInput): Career
     updateDeleteCareer(_id : Int, subject: String): Career
     updateAddCareer(_id : Int, subject: String): Career
@@ -115,4 +149,7 @@ type Mutation {
 
     updateAcademicRecord(studentId: String): AcademicRecordInfo
     deleteAcademicRecord(studentId: String): AcademicRecordInfo
+
+    registerStudentCourse(registerStudentCourse: RegisterStudentCourse): Course
+    unregisterStudentCourse(student_id: String, course_id: String): Course
 }
