@@ -38,10 +38,59 @@ type User {
     email: String
 }
 
+type Subject{
+    id: ID!
+	code: String!             
+	name: String!       
+	vigency: Boolean               
+	level: String             
+	credits: Int  
+    campus: String
+	faculty: String
+	department: String
+	basicAcademicUnit: String
+	Academic_level: String
+	Content: [String]
+}
+
+type Course{
+	 id: ID!
+	subject: String!
+	schedule: [Schedule]
+	academic_semester: String
+	start_date:     String
+	end_date:     String
+	group_number:    Int
+	places:    Int
+	professors:    [String]
+	studentsRecord:   [StudentsRecord]
+}
+type Schedule{
+		day: String
+		startH: String
+		endH: String
+		location: String
+	}
+type StudentsRecord{
+        student: String!
+		grades: [Float]
+}
+
+
+
+
 type Query {
     findAll: [User]
     findOne(id: ID!): User
     findOneByUsername(username: String!): User
+
+    findSubjectsByName(name: String!): [Subject]
+    findSubjectsByID(id: ID!): [Subject]
+    findSubjectByCode(code: String!): Subject
+
+    findCoursesBySubject(subject: String!): [Course]
+    findCourseById(id: ID!): Course
+    findCourseByStudent(student: String!): [Course]
 }
 
 type Mutation {
