@@ -21,7 +21,7 @@ public class RegisterSubjectsController {
     private RegisterSubjectsProcess registerSubjectsProcess;
 
     @MutationMapping
-    public Course createCareer(@Argument("input") RegisterStudentCourse registerStudentCourse) throws ParseException {
+    public Course registerStudentCourse(@Argument("input") RegisterStudentCourse registerStudentCourse) throws ParseException {
         return registerSubjectsProcess.registerStudentCourse(registerStudentCourse);
     }
 

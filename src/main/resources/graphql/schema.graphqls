@@ -93,15 +93,15 @@ input RegisterStudentCourse {
 }
 
 type Schedule{
-    day: String;
-    start_h: String;
-    end_h: String;
-    location: String;
+    day: String
+    start_h: String
+    end_h: String
+    location: String
 }
 
-type StudentRecord{
-    student: String;
-    grades: [Number];
+type StudentRecordRegisterSubject{
+    student: String
+    grades: [Float]
 }
 
 type Course {
@@ -111,10 +111,10 @@ type Course {
     schedule: [Schedule] 
     start_date: String   
     end_date: String
-    places: Number
-    group_number: Number
+    places: Int
+    group_number:Int
     professors: [String]
-    students_record: [StudentRecord]
+    students_record: [StudentRecordRegisterSubject]
 }
 
 type Query {
