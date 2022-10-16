@@ -24,7 +24,7 @@ public class RegisterSubjectsService {
 
 
     public Course getCourseInfo(String course_id){
-        return rest.getForObject("http://localhost:3000//register-subject/course/{course_id} ",
+        return rest.getForObject("http://localhost:3000/register-subject/course/{course_id} ",
                 Course.class, course_id);
     }
 

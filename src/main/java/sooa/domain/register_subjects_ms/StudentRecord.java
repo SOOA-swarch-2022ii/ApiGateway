@@ -5,7 +5,11 @@ import lombok.Data;
 @Data
 public class StudentRecord {
     private String student;
-    private Number[] grades; 
+    private Number[] grades;
+    
+    public StudentRecord() {
+        super();
+    }
     
     public StudentRecord(String student, Number[] grades) {
         this.student = student;

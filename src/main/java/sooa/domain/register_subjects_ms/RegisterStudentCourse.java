@@ -6,6 +6,10 @@ import lombok.Data;
 public class RegisterStudentCourse {
     private String student_id;
     private String course_id;
+
+    public RegisterStudentCourse(){
+        super();
+    }
     
     public RegisterStudentCourse(String student_id, String course_id) {
         this.student_id = student_id;

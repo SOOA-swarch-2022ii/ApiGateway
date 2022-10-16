@@ -105,7 +105,7 @@ type StudentRecordRegisterSubject{
 }
 
 type Course {
-    id: String   
+    _id: String   
     subject: String
     academic_semester: String
     schedule: [Schedule] 

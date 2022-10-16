@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Course {
-    private String id;
+    private String _id;
     private String subject;
     private String academic_semester;
     private Schedule[] schedule;
@@ -14,8 +14,12 @@ public class Course {
     private Number group_number ;
     private String[] professors ;
     private StudentRecord[] students_record ;
+
+    public Course(){
+        super();
+    }
     
-    public Course(String id,
+    public Course(String _id,
     String subject,
     String academic_semester,
     Schedule[] schedule,
@@ -25,7 +29,7 @@ public class Course {
     Number group_number,
     String[] professors,
     StudentRecord[] students_record) {
-        this.id = id;
+        this._id = _id;
         this.subject = subject;
         this.academic_semester = academic_semester;
         this.schedule = schedule;

@@ -9,6 +9,10 @@ public class Schedule {
     private String end_h;
     private String location;
 
+    public Schedule(){
+        super();
+    }
+
     public Schedule(String day, String start_h, String end_h, String location) {
         this.day = day;
         this.start_h = start_h;
