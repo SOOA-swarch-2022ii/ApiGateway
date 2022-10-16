@@ -35,7 +35,7 @@ public class RegisterSubjectsService {
     }
 
     public Course unregisterStudentCourse(String student_id, String course_id){
-        return rest.getForObject("http://localhost:3000/register-subject/delete/{student_id}/{student_id} ", 
+        return rest.getForObject("http://localhost:3000/register-subject/delete/{student_id}/{course_id}", 
         Course.class, student_id, course_id);
     }
 

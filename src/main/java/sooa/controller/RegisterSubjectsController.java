@@ -26,6 +26,7 @@ public class RegisterSubjectsController {
 
     @MutationMapping
     public Course unregisterStudentCourse(@Argument String student_id, @Argument String course_id) {
+        System.out.println("ESTOY EN EL CONTROLADOR " + student_id + " " + course_id);
         return registerSubjectsProcess.unregisterStudentCourse(student_id, course_id);
     }
 
