@@ -90,7 +90,8 @@ type Query {
 
     findCoursesBySubject(subject: String!): [Course]
     findCourseById(id: ID!): Course
-    findCourseByStudent(student: String!): [Course]
+    findCoursesByStudent(student: String!): [Course]
+    findCoursesByProfessor(student: String!): [Course]
 }
 
 type Mutation {
