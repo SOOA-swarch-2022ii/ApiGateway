@@ -8,8 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import sooa.domain.academic_records_ms.AcademicInfo;
 import sooa.domain.reg_and_auth_ms.User;
-import sooa.process.AuthAndRegProcess;
-import sooa.service.RegAndAuthService;
+import sooa.domain.subjects_ms.Course;
+import sooa.domain.subjects_ms.Subject;
+import sooa.process.SubjectBrowserProcess;
+import sooa.service.SubjectBrowserService;
 
 import java.text.ParseException;
 import java.util.List;
@@ -18,48 +20,52 @@ import java.util.List;
 public class SubjectsBrowserController {
 
     @Autowired
-    private SubjectBrowserProcess authAndRegProcess;
+    private SubjectBrowserProcess sbjProcess;
 
-    public SubjectsBrowserController(AuthAndRegProcess authAndRegProcess) {
-        this.authAndRegProcess = authAndRegProcess;
+    public SubjectsBrowserController(SubjectBrowserProcess sbjProcess) {
+        this.sbjProcess = sbjProcess;
     }
+    
+/*findSubjectsByName(name: String!): [Subject]
+    findSubjectsByID(id: ID!): [Subject]
+    findSubjectByCode(code: String!): Subject
 
-    @PostMapping(path = "/auth", consumes = "multipart/form-data", produces = "application/json")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public String loginForm(@RequestPart String username, @RequestPart String password){
-        return authAndRegProcess.auth(username, password);
-    }
+    findCoursesBySubject(subject: String!): [Course]
+    findCourseById(id: ID!): Course
+    findCoursesByStudent(student: String!): [Course]
+    findCoursesByProfessor(student: String!): [Course] */
 
     @QueryMapping
-    public List<User> findAll() {
-        return authAndRegProcess.getAllUsers();
+    public Subject getSubjectById(@Argument String id) {
+        return sbjProcess.getSubjectById(id);
     }
-
     @QueryMapping
-    public User findOne(@Argument Long id) {
-        return authAndRegProcess.getUser(id);
+    public List<Subject> getSubjectByName(@Argument String name) {
+        return sbjProcess.getSubjectByName(name);
     }
-
     @QueryMapping
-    public User findOneByUsername(@Argument String username) {
-        return authAndRegProcess.getUserByUsername(username);
+    public Subject getSubjectByCode(@Argument String code) {
+        return sbjProcess.getSubjectByCode(code);
     }
-
-    @MutationMapping
-    public User createUser(@Argument("userInput") User user,
-                           @Argument("academicInfoInput") AcademicInfo academicInfo) throws ParseException {
-
-        return authAndRegProcess.createUser(user, academicInfo);
+    @QueryMapping
+    public Course getCourseById(@Argument String id){
+        return sbjProcess.getCourseById(id);
     }
-
-    @MutationMapping
-    public User updateUser(@Argument Long id, @Argument("input") User user) {
-        return authAndRegProcess.updateUser(id, user);
+    @QueryMapping
+    public List<Course> getCoursesBySubject(@Argument String sb){
+        return sbjProcess.getCoursesBySubject(sb);
     }
-
-    @MutationMapping
-    public void deleteUser(@Argument Long id) {
-        authAndRegProcess.deleteUser(id);
+    @QueryMapping
+    public List<Course> getCoursesByStudent(@Argument String st){
+        return sbjProcess.getCoursesByStudent(st);
+    }
+    @QueryMapping
+    public List<Course> getCoursesBySubjectSem(@Argument String sb, @Argument int semester){
+        return sbjProcess.getCoursesBySubjectSem(sb,semester);
+    }
+    @QueryMapping
+    public List<Course> getCoursesByProfessor(@Argument String prof){
+        return sbjProcess.getCoursesByProfessor(prof);
     }
 
 }

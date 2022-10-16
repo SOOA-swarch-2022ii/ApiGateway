@@ -84,14 +84,15 @@ type Query {
     findOne(id: ID!): User
     findOneByUsername(username: String!): User
 
-    findSubjectsByName(name: String!): [Subject]
-    findSubjectsByID(id: ID!): [Subject]
-    findSubjectByCode(code: String!): Subject
+    getSubjectById(name: String!): [Subject]
+    getSubjectByName(id: ID!): [Subject]
+    getSubjectByCode(code: String!): Subject
 
-    findCoursesBySubject(subject: String!): [Course]
-    findCourseById(id: ID!): Course
-    findCoursesByStudent(student: String!): [Course]
-    findCoursesByProfessor(student: String!): [Course]
+    getCourseById(subject: String!): [Course]
+    getCoursesBySubject(id: ID!): Course
+    getCoursesByStudent(student: String!): [Course]
+    getCoursesBySubjectSem(student: String!, semester: String!): [Course]
+    getCoursesByProfessor(professor: String!): [Course]
 }
 
 type Mutation {
