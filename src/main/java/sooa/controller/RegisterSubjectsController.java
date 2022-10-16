@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import sooa.process.RegisterSubjectsProcess;
 import sooa.domain.register_subjects_ms.Course;
 import sooa.domain.register_subjects_ms.SubjectCourse;
-import sooa.domain.register_subjects_ms.RegisterStudentCourse;
+import sooa.domain.register_subjects_ms.RecordStudentCourse;
 
 import java.text.ParseException;
 import java.util.List;
@@ -20,8 +20,8 @@ public class RegisterSubjectsController {
     private RegisterSubjectsProcess registerSubjectsProcess;
 
     @MutationMapping
-    public Course registerStudentCourse(@Argument("input") RegisterStudentCourse registerStudentCourse) throws ParseException {
-        return registerSubjectsProcess.registerStudentCourse(registerStudentCourse);
+    public Course registerStudentCourse(@Argument("recordStudentCourse") RecordStudentCourse recordStudentCourse) throws ParseException {
+        return registerSubjectsProcess.registerStudentCourse(recordStudentCourse);
     }
 
     @MutationMapping

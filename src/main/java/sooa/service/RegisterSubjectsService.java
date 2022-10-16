@@ -3,7 +3,7 @@ package sooa.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import sooa.domain.register_subjects_ms.RegisterStudentCourse;
+import sooa.domain.register_subjects_ms.RecordStudentCourse;
 import sooa.domain.register_subjects_ms.Course;
 import sooa.domain.register_subjects_ms.SubjectCourse;
 
@@ -18,8 +18,8 @@ public class RegisterSubjectsService {
         this.rest = restTemplate;
     }
 
-    public Course registerStudentCourse(RegisterStudentCourse registerStudentCourse){
-        return rest.postForObject("http://localhost:3000/register-subject/", registerStudentCourse,
+    public Course registerStudentCourse(RecordStudentCourse recordStudentCourse){ 
+        return rest.postForObject("http://localhost:3000/register-subject/", recordStudentCourse,
                 Course.class);
     }
 

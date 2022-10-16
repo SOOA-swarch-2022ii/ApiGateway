@@ -1,7 +1,7 @@
 package sooa.process;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sooa.domain.register_subjects_ms.RegisterStudentCourse;
+import sooa.domain.register_subjects_ms.RecordStudentCourse;
 import sooa.domain.register_subjects_ms.Course;
 import sooa.domain.register_subjects_ms.SubjectCourse;
 import sooa.service.RegisterSubjectsService;
@@ -17,8 +17,8 @@ public class RegisterSubjectsProcess {
         this.registerSubjectsService = registerSubjectsService;
     }
 
-    public Course registerStudentCourse(RegisterStudentCourse registerStudentCourse) {
-        return registerSubjectsService.registerStudentCourse(registerStudentCourse);
+    public Course registerStudentCourse(RecordStudentCourse recordStudentCourse) {
+        return registerSubjectsService.registerStudentCourse(recordStudentCourse);
     }
 
     public Course unregisterStudentCourse(String student_id, String course_id) {

@@ -87,7 +87,7 @@ type StudentsRecords {
     students_record: [StudentRecord]
 }
 
-input RegisterStudentCourse {
+input RecordStudentCourse {
     student_id: String
     course_id: String
 }
@@ -170,6 +170,6 @@ type Mutation {
     updateAcademicRecord(studentId: String): AcademicRecordInfo
     deleteAcademicRecord(studentId: String): AcademicRecordInfo
 
-    registerStudentCourse(registerStudentCourse: RegisterStudentCourse): Course
+    registerStudentCourse(recordStudentCourse: RecordStudentCourse): Course
     unregisterStudentCourse(student_id: String, course_id: String): Course
 }
