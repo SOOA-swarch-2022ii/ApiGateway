@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import sooa.domain.register_subjects_ms.RegisterStudentCourse;
 import sooa.domain.register_subjects_ms.Course;
+import sooa.domain.register_subjects_ms.SubjectCourse;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class RegisterSubjectsService {
     }
 
     public Course registerStudentCourse(RegisterStudentCourse registerStudentCourse){
-        return rest.postForObject("http://localhost:3000//register-subject/", registerStudentCourse,
+        return rest.postForObject("http://localhost:3000/register-subject/", registerStudentCourse,
                 Course.class);
     }
 
@@ -28,13 +29,13 @@ public class RegisterSubjectsService {
                 Course.class, course_id);
     }
 
-    public List<Course> getStudentCourses(String student_id){
-        return rest.getForObject("http://localhost:3000//register-subject/student/" + student_id ,
+    public List<SubjectCourse> getStudentCourses(String student_id){
+        return rest.getForObject("http://localhost:3000/register-subject/student/" + student_id ,
         List.class);
     }
 
     public Course unregisterStudentCourse(String student_id, String course_id){
-        return rest.getForObject("http://localhost:3000//register-subject/delete/{student_id}/{student_id} ", 
+        return rest.getForObject("http://localhost:3000/register-subject/delete/{student_id}/{student_id} ", 
         Course.class, student_id, course_id);
     }
 

@@ -117,6 +117,26 @@ type Course {
     students_record: [StudentRecordRegisterSubject]
 }
 
+type Subject {
+    _id: String  
+    academic_level: String 
+    basic_academic_unit: String 
+    faculty: String 
+    level: String 
+    vigency: Boolean
+    campus: String 
+    name: String 
+    code: String 
+    content: [String] 
+    credits: Int 
+    department: String 
+}
+
+type SubjectCourse {
+    course: Course   
+    subject: Subject
+}
+
 type Query {
     findAll: [User]
     findOne(id: ID!): User
@@ -129,7 +149,7 @@ type Query {
     findAcademicRecord(student_id: String): AcademicRecordInfo
 
     findOneCourse(course_id: String): Course
-    findCoursesByStudent(student_id: String): [Course]
+    findCoursesByStudent(student_id: String): [SubjectCourse]
 }
 
 

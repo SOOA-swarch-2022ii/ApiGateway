@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sooa.domain.register_subjects_ms.RegisterStudentCourse;
 import sooa.domain.register_subjects_ms.Course;
+import sooa.domain.register_subjects_ms.SubjectCourse;
 import sooa.service.RegisterSubjectsService;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class RegisterSubjectsProcess {
         return registerSubjectsService.getCourseInfo(course_id);
     }
 
-    public List<Course> getStudentCourses(String student_id) {
+    public List<SubjectCourse> getStudentCourses(String student_id) {
         return registerSubjectsService.getStudentCourses(student_id);
     }
     

@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import sooa.domain.reg_and_auth_ms.User;
 import sooa.process.RegisterSubjectsProcess;
 import sooa.domain.register_subjects_ms.Course;
+import sooa.domain.register_subjects_ms.SubjectCourse;
 import sooa.domain.register_subjects_ms.RegisterStudentCourse;
 
 import java.text.ParseException;
@@ -36,7 +35,7 @@ public class RegisterSubjectsController {
     }
 
     @QueryMapping
-    public List<Course> findCoursesByStudent(@Argument String student_id) {
+    public List<SubjectCourse> findCoursesByStudent(@Argument String student_id) {
         return registerSubjectsProcess.getStudentCourses(student_id);
     }
     
