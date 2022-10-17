@@ -87,6 +87,56 @@ type StudentsRecords {
     students_record: [StudentRecord]
 }
 
+input RecordStudentCourse {
+    student_id: String
+    course_id: String
+}
+
+type Schedule{
+    day: String
+    start_h: String
+    end_h: String
+    location: String
+}
+
+type StudentRecordRegisterSubject{
+    student: String
+    grades: [Float]
+}
+
+type Course {
+    _id: String   
+    subject: String
+    academic_semester: String
+    schedule: [Schedule] 
+    start_date: String   
+    end_date: String
+    places: Int
+    group_number:Int
+    professors: [String]
+    students_record: [StudentRecordRegisterSubject]
+}
+
+type Subject {
+    _id: String  
+    academic_level: String 
+    basic_academic_unit: String 
+    faculty: String 
+    level: String 
+    vigency: Boolean
+    campus: String 
+    name: String 
+    code: String 
+    content: [String] 
+    credits: Int 
+    department: String 
+}
+
+type SubjectCourse {
+    course: Course   
+    subject: Subject
+}
+
 type Query {
     findAll: [User]
     findOne(id: ID!): User
@@ -97,6 +147,9 @@ type Query {
     getGrades: [StudentsRecords]
     findAllAcademicRecords: [AcademicRecordInfo]
     findAcademicRecord(student_id: String): AcademicRecordInfo
+
+    findOneCourse(course_id: String): Course
+    findCoursesByStudent(student_id: String): [SubjectCourse]
 }
 
 
@@ -104,6 +157,7 @@ type Mutation {
     createUser(userInput: UserInput, academicRecordInfoInput: AcademicRecordInfoInput): User
     updateUser(id: ID!, input: UserInput): User
     deleteUser(id: ID!): User
+
     createCareer(input: CareerInput): Career
     updateDeleteCareer(_id : Int, subject: String): Career
     updateAddCareer(_id : Int, subject: String): Career
@@ -115,4 +169,7 @@ type Mutation {
 
     updateAcademicRecord(studentId: String): AcademicRecordInfo
     deleteAcademicRecord(studentId: String): AcademicRecordInfo
+
+    registerStudentCourse(recordStudentCourse: RecordStudentCourse): Course
+    unregisterStudentCourse(student_id: String, course_id: String): Course
 }
