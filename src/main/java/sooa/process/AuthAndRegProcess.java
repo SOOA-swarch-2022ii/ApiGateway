@@ -44,12 +44,10 @@ public class AuthAndRegProcess {
     }
 
     public List<User> getAllUsers() {
-        rmqMessagingService.sendSimpleMessage("La cola funciona");
         return regAndAuthService.getUsers();
     }
 
     public User getUser(Long id) {
-        System.out.println(rmqMessagingService.receiveMessage());
         return regAndAuthService.getUser(id);
     }
 

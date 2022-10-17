@@ -150,6 +150,17 @@ type Query {
 
     findOneCourse(course_id: String): Course
     findCoursesByStudent(student_id: String): [SubjectCourse]
+    findOneByUsername(username: String!): User
+
+    getSubjectById(name: String!): [Subject]
+    getSubjectByName(id: ID!): [Subject]
+    getSubjectByCode(code: String!): Subject
+
+    getCourseById(subject: String!): [Course]
+    getCoursesBySubject(id: ID!): Course
+    getCoursesByStudent(student: String!): [Course]
+    getCoursesBySubjectSem(student: String!, semester: String!): [Course]
+    getCoursesByProfessor(professor: String!): [Course]
 }
 
 

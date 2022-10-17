@@ -28,44 +28,43 @@ public class RegAndAuthService {
     }
 
     public User getCurrentUser(){
-        return rest.getForObject("http://localhost:8080/register/user",
+        return rest.getForObject("http://sooa-reg-and-auth-container:8080/register/user",
                 User.class);
     }
 
     public User getUser(Long id) {
-        return rest.getForObject("http://localhost:8080/register/user/{id}",
+        return rest.getForObject("http://sooa-reg-and-auth-container:8080/register/user/{id}",
                 User.class, id);
     }
 
     public User getUserByUsername(String username) {
-        return rest.getForObject("http://localhost:8080/register/user/username/{username}",
+        return rest.getForObject("http://sooa-reg-and-auth-container:8080/register/user/username/{username}",
                 User.class, username);
     }
 
     public List<User> getUsers() {
-        System.out.println(getCurrentUser());
-        return rest.getForObject("http://localhost:8080/register/users",
+        return rest.getForObject("http://sooa-reg-and-auth-container:8080/register/users",
                 List.class);
     }
 
     public User createUser(User user) {
-        return rest.postForObject("http://localhost:8080/register/create",
+        return rest.postForObject("http://sooa-reg-and-auth-container:8080/register/create",
                 user, User.class);
     }
 
     public User updateUser(Long id, User user) {
         rest.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
-        return rest.patchForObject("http://localhost:8080/register/update/{id}",
+        return rest.patchForObject("http://sooa-reg-and-auth-container:8080/register/update/{id}",
                 user, User.class, id);
     }
 
     public void deleteUser(Long id) {
-        rest.delete("http://localhost:8080/register/delete/{id}",
+        rest.delete("http://sooa-reg-and-auth-container:8080/register/delete/{id}",
                 id);
     }
 
     public String getRole(Long id) {
-        return rest.getForObject("http://localhost:8080/register/role/{id}",
+        return rest.getForObject("http://sooa-reg-and-auth-container:8080/register/role/{id}",
                 String.class, id);
     }
 
@@ -90,7 +89,7 @@ public class RegAndAuthService {
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
         ResponseEntity<String> response = rest.postForEntity(
-                "http://localhost:8080/auth", request , String.class);
+                "http://sooa-reg-and-auth-container:8080/auth", request , String.class);
 
         return response.getBody();
     }
