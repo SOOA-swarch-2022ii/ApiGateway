@@ -2,9 +2,7 @@ package sooa.process;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import sooa.domain.subjects_ms.Course;
-import sooa.domain.subjects_ms.Subject;
-import sooa.service.AcademicRecordService;
+import sooa.domain.register_subjects_ms.*;
 import sooa.service.RMQMessagingService;
 import sooa.service.SubjectBrowserService;
 

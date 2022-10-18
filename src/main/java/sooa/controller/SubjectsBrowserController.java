@@ -6,10 +6,8 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import sooa.domain.academic_records_ms.AcademicInfo;
 import sooa.domain.reg_and_auth_ms.User;
-import sooa.domain.subjects_ms.Course;
-import sooa.domain.subjects_ms.Subject;
+import sooa.domain.register_subjects_ms.*;
 import sooa.process.SubjectBrowserProcess;
 import sooa.service.SubjectBrowserService;
 
