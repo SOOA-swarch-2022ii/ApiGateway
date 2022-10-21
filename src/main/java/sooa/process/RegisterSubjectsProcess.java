@@ -10,14 +10,17 @@ import java.util.List;
 
 @Component
 public class RegisterSubjectsProcess {
+    
     @Autowired
     private RegisterSubjectsService registerSubjectsService;
+    
 
     public RegisterSubjectsProcess(RegisterSubjectsService registerSubjectsService) {
         this.registerSubjectsService = registerSubjectsService;
     }
 
     public Course registerStudentCourse(RecordStudentCourse recordStudentCourse) {
+
         return registerSubjectsService.registerStudentCourse(recordStudentCourse);
     }
 
