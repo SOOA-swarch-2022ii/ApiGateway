@@ -7,16 +7,18 @@ import java.util.ArrayList;
 public class AcademicRecordInfo {
 
     private String student_id;
-    private ArrayList<String> subjects_pending;
-    private ArrayList<String> subjects_record;
+    private String subjects_pending;
+    private String subjects_record;
     private float papa;
     private float papi;
     private boolean status;
     private String faculty;
     private String campus;
     private String career;
-
-    public AcademicRecordInfo( String student_id, String faculty, String campus, String career) {
+    public AcademicRecordInfo(){
+        super();
+    }
+    /* public AcademicRecordInfo( String student_id, String faculty, String campus, String career) {
         this.student_id = student_id;
         this.subjects_pending = new ArrayList<String>();
         this.subjects_record = new ArrayList<String>();
@@ -26,5 +28,6 @@ public class AcademicRecordInfo {
         this.faculty = faculty;
         this.campus = campus;
         this.career = career;
-    }
+
+    }*/
 }
