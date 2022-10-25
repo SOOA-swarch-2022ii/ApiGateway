@@ -15,13 +15,11 @@ public class AcademicRecordInfo {
     private String faculty;
     private String campus;
     private String career;
-    public AcademicRecordInfo(){
-        super();
-    }
-    /* public AcademicRecordInfo( String student_id, String faculty, String campus, String career) {
+    public AcademicRecordInfo(){super();};
+    public AcademicRecordInfo( String student_id, String faculty, String campus, String career) {
         this.student_id = student_id;
-        this.subjects_pending = new ArrayList<String>();
-        this.subjects_record = new ArrayList<String>();
+        this.subjects_pending = "";
+        this.subjects_record = "";
         this.papa = 0;
         this.papi = 0;
         this.status = true;
@@ -29,5 +27,5 @@ public class AcademicRecordInfo {
         this.campus = campus;
         this.career = career;
 
-    }*/
+    }
 }
