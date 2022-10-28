@@ -209,7 +209,7 @@ type Mutation {
     updateAcademicRecord(studentId: String): AcademicRecordInfo
     deleteAcademicRecord(studentId: String): AcademicRecordInfo
 
-    createCourse(course: CourseInput): Course
+    createCourse(courseInput: CourseInput): Course
     registerStudentCourse(recordStudentCourse: RecordStudentCourse): Course
     unregisterStudentCourse(student_id: String, course_id: String): Course
 }

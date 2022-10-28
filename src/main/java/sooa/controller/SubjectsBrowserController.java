@@ -2,11 +2,13 @@ package sooa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.*;
 import sooa.domain.subjects_ms.*;
 import sooa.process.SubjectBrowserProcess;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,12 @@ public class SubjectsBrowserController {
     @QueryMapping
     public Course[] getCoursesByProfe(@Argument String profe){
         return sbjProcess.getCoursesByProfe(profe);
+    }
+/*course: CourseInput */
+    @MutationMapping
+    public Course createCourse(@Argument("courseInput") Course course) throws ParseException {
+
+        return sbjProcess.createCourse(course);
     }
 
 }
