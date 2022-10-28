@@ -5,7 +5,6 @@ type Date {
 }
 
 input UserInput {
-
     role: String
     name: String
     phone: String
@@ -17,6 +16,30 @@ input UserInput {
     email: String
     password: String
 
+}
+
+input ScheduleInput{
+    day: String
+    start_h: String
+    end_h: String
+    location: String
+}
+
+input StudentRecordRegisterSubjectInput{
+    student: String
+    grades: [Float]
+}
+
+input CourseInput {
+    subject: String
+    academic_semester: String
+    schedule: [ScheduleInput]
+    start_date: String
+    end_date: String
+    places: Int
+    group_number:Int
+    professors: [String]
+    students_record: [StudentRecordRegisterSubjectInput]
 }
 
 input AcademicRecordInfoInput {
@@ -177,6 +200,7 @@ type Mutation {
     updateDeleteCareer(_id : Int, subject: String): Career
     updateAddCareer(_id : Int, subject: String): Career
     deleteCareer(_id: Int): Career
+
     updateGradeId(id: String, student: String, grade: Float): StudentRecord
     updateGradeCourse(subject: String, group: Int, student: String, grade: Float): StudentRecord
     deleteGradeId(id:String, student: String, grade: Float): StudentRecord
@@ -185,6 +209,7 @@ type Mutation {
     updateAcademicRecord(studentId: String): AcademicRecordInfo
     deleteAcademicRecord(studentId: String): AcademicRecordInfo
 
+    createCourse(course: CourseInput): Course
     registerStudentCourse(recordStudentCourse: RecordStudentCourse): Course
     unregisterStudentCourse(student_id: String, course_id: String): Course
 }
