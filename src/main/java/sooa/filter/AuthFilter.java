@@ -36,7 +36,7 @@ public class AuthFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
+/* 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String content = request.getContentType();
         if(!content.contains("multipart"))
@@ -44,7 +44,7 @@ public class AuthFilter extends GenericFilterBean {
             if (authAndRegProcess.getCurrentUser() == null)
                 throw new ServletException();
         }
-
+*/
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }
