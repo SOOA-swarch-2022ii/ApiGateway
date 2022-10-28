@@ -48,7 +48,7 @@ type User {
     address: String
     nationality: String
     sex: String
-    dateOfBirth: Date
+    dateOfBirth: String
     identificationNumber: Int
     email: String
 }
@@ -141,6 +141,8 @@ type SubjectCourse {
 type Query {
     findAll: [User]
     findOne(id: ID!): User
+    findCurrentUser: User
+
     getCareers: [Career]
     getCareer(_id : Int): Career
     getGrade(id: String): StudentsRecords
