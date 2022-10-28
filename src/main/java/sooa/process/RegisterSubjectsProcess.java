@@ -6,6 +6,7 @@ import sooa.domain.subjects_ms.Course;
 import sooa.domain.subjects_ms.RecordStudentCourse;
 import sooa.domain.subjects_ms.SubjectCourse;
 import sooa.service.RegisterSubjectsService;
+import sooa.service.RMQMessagingService;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class RegisterSubjectsProcess {
     
     @Autowired
     private RegisterSubjectsService registerSubjectsService;
+
+    @Autowired
+    private RMQMessagingService rMQMessagingService;
     
 
     public RegisterSubjectsProcess(RegisterSubjectsService registerSubjectsService) {
@@ -21,7 +25,7 @@ public class RegisterSubjectsProcess {
     }
 
     public Course registerStudentCourse(RecordStudentCourse recordStudentCourse) {
-
+        rMQMessagingService.sendSimpleMessage(recordStudentCourse);
         return registerSubjectsService.registerStudentCourse(recordStudentCourse);
     }
 
