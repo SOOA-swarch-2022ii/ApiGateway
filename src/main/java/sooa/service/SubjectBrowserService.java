@@ -62,4 +62,11 @@ public class SubjectBrowserService {
         return rest.getForObject("http://localhost:6666/sooa-sb-ms/courses/profe="+profe,
         Course[].class,profe);
     }
+
+    
+    public Course createCourse(Course course) {
+        return rest.postForObject("http://localhost:6666/sooa-sb-ms/new-course",
+        course, Course.class);
+    }
+
 }

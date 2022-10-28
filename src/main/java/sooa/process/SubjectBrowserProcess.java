@@ -40,4 +40,9 @@ public class SubjectBrowserProcess {
         return sbsrvice.getCoursesByProfe(profe);
     }
 
+    public Course createCourse(Course course) {
+        Course createdCourse = sbsrvice.createCourse(course);
+        return createdCourse;
+    }
+
 }
