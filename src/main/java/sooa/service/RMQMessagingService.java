@@ -21,5 +21,5 @@ public class RMQMessagingService {
     public String receiveMessage() {
         return (String) rabbitTemplate.receiveAndConvert("cola_prueba");
     }
-
+    
 }

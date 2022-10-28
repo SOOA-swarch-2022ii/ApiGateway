@@ -2,7 +2,7 @@ package sooa.process;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sooa.domain.academic_records_ms.AcademicInfo;
+import sooa.domain.academic_record_ms.AcademicRecordInfo;
 import sooa.domain.reg_and_auth_ms.User;
 import sooa.service.AcademicRecordService;
 import sooa.service.RMQMessagingService;
@@ -31,13 +31,13 @@ public class AuthAndRegProcess {
     }
 
     // USA DOS MS
-    public User createUser(User user, AcademicInfo academicInfo) {
+    public User createUser(User user, AcademicRecordInfo academicRecordInfo) {
 
         User createdUser = regAndAuthService.createUser(user);
 
         // Aqui va el codigo que agrega la información propia del rol
         if (createdUser.getRole() == User.Role.ESTUDIANTE){
-          //
+            AcademicRecordInfo createdAcademicRecord = academicRecordService.createAcademicRecord(academicRecordInfo);
         }
 
         return createdUser;
