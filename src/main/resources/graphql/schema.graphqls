@@ -20,6 +20,7 @@ input UserInput {
 }
 
 input AcademicRecordInfoInput {
+    student_id: String
     faculty: String
     campus: String
     career: String

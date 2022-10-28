@@ -13,16 +13,8 @@ import java.util.List;
 public class AcademicRecordProcess {
 
     @Autowired
-    private RegAndAuthService regAndAuthService;
-
-    @Autowired
     private AcademicRecordService academicRecordService;
 
-    public AcademicRecordProcess(RegAndAuthService regAndAuthService) {
-        this.regAndAuthService = regAndAuthService;
-    }
-
-    // USA DOS MS
     public AcademicRecordInfo createAcademicRecord(AcademicRecordInfo academicRecordInfo) {
 
         return academicRecordService.createAcademicRecord(academicRecordInfo);

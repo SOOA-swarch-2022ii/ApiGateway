@@ -35,7 +35,6 @@ public class AuthAndRegProcess {
 
         User createdUser = regAndAuthService.createUser(user);
 
-        // Aqui va el codigo que agrega la información propia del rol
         if (createdUser.getRole() == User.Role.ESTUDIANTE){
             AcademicRecordInfo createdAcademicRecord = academicRecordService.createAcademicRecord(academicRecordInfo);
         }
