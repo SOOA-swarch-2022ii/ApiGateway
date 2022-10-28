@@ -3,9 +3,10 @@ package sooa.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import sooa.domain.register_subjects_ms.RecordStudentCourse;
-import sooa.domain.register_subjects_ms.Course;
-import sooa.domain.register_subjects_ms.SubjectCourse;
+
+import sooa.domain.subjects_ms.Course;
+import sooa.domain.subjects_ms.RecordStudentCourse;
+import sooa.domain.subjects_ms.SubjectCourse;
 
 import java.util.List;
 

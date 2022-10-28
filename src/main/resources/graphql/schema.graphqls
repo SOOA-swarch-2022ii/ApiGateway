@@ -143,6 +143,7 @@ type Query {
     findOne(id: ID!): User
     findCurrentUser: User
 
+    findOneByUsername(username: String!): User
     getCareers: [Career]
     getCareer(_id : Int): Career
     getGrade(id: String): StudentsRecords
@@ -153,17 +154,17 @@ type Query {
 
     findOneCourse(course_id: String): Course
     findCoursesByStudent(student_id: String): [SubjectCourse]
-    findOneByUsername(username: String!): User
+    
 
-    getSubjectById(name: String!): [Subject]
-    getSubjectByName(id: ID!): [Subject]
+    getSubjectById(id: ID!): Subject
+    getSubjectByName(name: String!): Subject
     getSubjectByCode(code: String!): Subject
 
-    getCourseById(subject: String!): [Course]
-    getCoursesBySubject(id: ID!): Course
+    getCourseById(id: ID!): Course
+    getCoursesBySubject(subject: String!): [Course]
     getCoursesByStudent(student: String!): [Course]
-    getCoursesBySubjectSem(student: String!, semester: String!): [Course]
-    getCoursesByProfessor(professor: String!): [Course]
+    getCoursesByStudentSem(student: String!, semester: String!): [Course]
+    getCoursesByProfe(profe: String!): [Course]
 }
 
 

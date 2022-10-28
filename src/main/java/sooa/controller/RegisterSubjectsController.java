@@ -5,10 +5,11 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.*;
+
+import sooa.domain.subjects_ms.Course;
+import sooa.domain.subjects_ms.RecordStudentCourse;
+import sooa.domain.subjects_ms.SubjectCourse;
 import sooa.process.RegisterSubjectsProcess;
-import sooa.domain.register_subjects_ms.Course;
-import sooa.domain.register_subjects_ms.SubjectCourse;
-import sooa.domain.register_subjects_ms.RecordStudentCourse;
 
 import java.text.ParseException;
 import java.util.List;

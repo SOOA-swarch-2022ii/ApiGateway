@@ -1,4 +1,4 @@
-package sooa.domain.register_subjects_ms;
+package sooa.domain.subjects_ms;
 
 import lombok.Data;
 
