@@ -33,7 +33,7 @@ type User {
     address: String
     nationality: String
     sex: String
-    dateOfBirth: Date
+    dateOfBirth: String
     identificationNumber: Int
     email: String
 }
@@ -42,6 +42,7 @@ type Query {
     findAll: [User]
     findOne(id: ID!): User
     findOneByUsername(username: String!): User
+    findCurrentUser: User
 }
 
 type Mutation {

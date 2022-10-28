@@ -64,4 +64,8 @@ public class AuthAndRegProcess {
         regAndAuthService.deleteUser(id);
     }
 
+    public User getCurrentUser() {
+        return regAndAuthService.getCurrentUser();
+    }
+
 }

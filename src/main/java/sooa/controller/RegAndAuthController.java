@@ -36,6 +36,11 @@ public class RegAndAuthController {
     }
 
     @QueryMapping
+    public User findCurrentUser() {
+        return authAndRegProcess.getCurrentUser();
+    }
+
+    @QueryMapping
     public User findOne(@Argument Long id) {
         return authAndRegProcess.getUser(id);
     }
