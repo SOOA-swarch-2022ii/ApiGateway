@@ -19,7 +19,7 @@ public class AcademicRecordService {
     }
 
     public AcademicRecordInfo getAcademicRecord(String student_id){
-        return rest.getForObject("http://localhost:4001/academic-record/{student_id}/",
+        return rest.getForObject("http://localhost:4001/academic-record/{student_id}",
                 AcademicRecordInfo.class, student_id);
     }
 
@@ -34,12 +34,12 @@ public class AcademicRecordService {
     }
 
     public void updateAcademicRecord(String student_id) {
-        rest.put("http://localhost:4001/academic-record/{student_id}/",
+        rest.put("http://localhost:4001/academic-record/{student_id}",
                 student_id);
     }
 
     public void deleteAcademicRecord(String student_id) {
-        rest.delete("http://localhost:4001/academic-record/{student_id}/",
+        rest.delete("http://localhost:4001/academic-record/{student_id}",
                 student_id);
     }
 
