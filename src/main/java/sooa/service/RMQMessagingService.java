@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.Getter;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import sooa.domain.register_subjects_ms.RecordStudentCourse;
+import sooa.domain.subjects_ms.RecordStudentCourse;
 @Getter
 @Service
 public class RMQMessagingService {
