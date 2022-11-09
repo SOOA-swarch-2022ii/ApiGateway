@@ -1,11 +1,9 @@
 package sooa.service;
 
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import sooa.domain.academic_record_ms.AcademicRecordInfo;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sooa.domain.reg_and_auth_ms.User;
 
 import java.util.List;
 

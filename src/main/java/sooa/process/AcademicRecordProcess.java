@@ -3,9 +3,7 @@ package sooa.process;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sooa.domain.academic_record_ms.AcademicRecordInfo;
-import sooa.domain.reg_and_auth_ms.User;
 import sooa.service.AcademicRecordService;
-import sooa.service.RegAndAuthService;
 
 import java.util.List;
 

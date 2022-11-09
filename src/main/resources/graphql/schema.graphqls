@@ -1,21 +1,23 @@
-type Date {
+input UserInput {
+    id: String
+username: String
+birthdate: DateInput
+names: String
+last_names: String
+role: String
+password: String
+email: String
+phone: String
+}
+input DateInput {
     day: String
     month: String
     year: String
 }
 
-input UserInput {
-    role: String
-    name: String
-    phone: String
-    address: String
-    nationality: String
-    sex: String
-    dateOfBirth: String
-    identificationNumber: Int
-    email: String
+input LoginInput {
+    username: String
     password: String
-
 }
 
 input ScheduleInput{
@@ -28,6 +30,21 @@ input ScheduleInput{
 input StudentRecordRegisterSubjectInput{
     student: String
     grades: [Float]
+}
+
+input SubjectInput {
+    _id: String  
+    academic_level: String 
+    basic_academic_unit: String 
+    faculty: String 
+    level: String 
+    vigency: Boolean
+    campus: String 
+    name: String 
+    code: String 
+    content: [String] 
+    credits: Int 
+    department: String 
 }
 
 input CourseInput {
@@ -49,6 +66,25 @@ input AcademicRecordInfoInput {
     career: String
 }
 
+type User {
+    id: String
+    username: String
+    birthdate: Date
+    names: String
+    last_names: String
+    role: String
+    password: String
+    email: String
+    phone: String
+}
+
+type TokenLogin{
+    user: String
+    token: String
+    creation: String
+    expires: String
+}
+
 type AcademicRecordInfo {
     id: ID!
     student_id: String
@@ -60,20 +96,6 @@ type AcademicRecordInfo {
     faculty: String
     campus: String
     career: String
-}
-
-type User {
-    id: ID!
-    studentId: String
-    role: String
-    name: String
-    phone: String
-    address: String
-    nationality: String
-    sex: String
-    dateOfBirth: String
-    identificationNumber: Int
-    email: String
 }
 
 type Career {
@@ -140,7 +162,11 @@ type Course {
     professors: [String]
     students_record: [StudentRecordRegisterSubject]
 }
-
+type Date {
+    day: String
+    month: String
+    year: String
+}
 type Subject {
     _id: String  
     academic_level: String 
@@ -162,22 +188,20 @@ type SubjectCourse {
 }
 
 type Query {
-    findAll: [User]
-    findOne(id: ID!): User
-    findCurrentUser: User
-
-    findOneByUsername(username: String!): User
+   
+    getUser(username: String!): User
     getCareers: [Career]
     getCareer(_id : Int): Career
+
     getGrade(id: String): StudentsRecords
     getGradeCourse(subject: String, group: Int): StudentsRecords
     getGrades: [StudentsRecords]
+
     findAllAcademicRecords: [AcademicRecordInfo]
     findAcademicRecord(student_id: String): AcademicRecordInfo
 
     findOneCourse(course_id: String): Course
     findCoursesByStudent(student_id: String): [SubjectCourse]
-    
 
     getSubjectById(id: ID!): Subject
     getSubjectByName(name: String!): Subject
@@ -192,9 +216,9 @@ type Query {
 
 
 type Mutation {
-    createUser(userInput: UserInput, academicRecordInfoInput: AcademicRecordInfoInput): User
-    updateUser(id: ID!, input: UserInput): User
-    deleteUser(id: ID!): User
+    registerUser(userInput: UserInput, academicRecordInfoInput: AcademicRecordInfoInput): User
+    getUser(username: String!): User
+    login(loginForm: LoginInput!): TokenLogin
 
     createCareer(input: CareerInput): Career
     updateDeleteCareer(_id : Int, subject: String): Career
@@ -210,6 +234,7 @@ type Mutation {
     deleteAcademicRecord(studentId: String): AcademicRecordInfo
 
     createCourse(courseInput: CourseInput): Course
+    createSubject(subjectInput: SubjectInput): Subject
     registerStudentCourse(recordStudentCourse: RecordStudentCourse): Course
     unregisterStudentCourse(student_id: String, course_id: String): Course
 }

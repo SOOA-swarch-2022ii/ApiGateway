@@ -11,6 +11,7 @@ import java.util.List;
 public class SubjectBrowserProcess {
     @Autowired
     private SubjectBrowserService sbsrvice;
+    
     public Subject getSubjectById(String id) {
         return sbsrvice.getSubjectById(id);
     }
@@ -43,6 +44,16 @@ public class SubjectBrowserProcess {
     public Course createCourse(Course course) {
         Course createdCourse = sbsrvice.createCourse(course);
         return createdCourse;
+    }
+
+    public Subject createSubject(Subject subject) {
+        Subject createdSubject = sbsrvice.createSubject(subject);
+        return createdSubject;
+    }
+
+    public Course updateCourse(Course course) {
+        Course updatedCourse = sbsrvice.updateCourse(course);
+        return updatedCourse;
     }
 
 }

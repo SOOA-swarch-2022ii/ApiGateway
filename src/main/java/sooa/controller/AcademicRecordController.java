@@ -6,10 +6,8 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sooa.domain.academic_record_ms.AcademicRecordInfo;
-import sooa.domain.reg_and_auth_ms.User;
 import sooa.process.AcademicRecordProcess;
 
-import java.text.ParseException;
 import java.util.List;
 
 @RestController

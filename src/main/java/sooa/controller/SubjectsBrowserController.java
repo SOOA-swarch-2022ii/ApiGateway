@@ -60,4 +60,15 @@ public class SubjectsBrowserController {
         return sbjProcess.createCourse(course);
     }
 
+    @MutationMapping
+    public Subject createSubject(@Argument("subjectInput") Subject subject) throws ParseException {
+        return sbjProcess.createSubject(subject);
+    }
+
+    @MutationMapping
+    public Course updateCourse(@Argument("courseInput") Course course) throws ParseException {
+
+        return sbjProcess.updateCourse(course);
+    }
+
 }
