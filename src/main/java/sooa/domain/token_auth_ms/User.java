@@ -6,7 +6,7 @@ import lombok.Data;
 public class User {
     private String id;
     private String username;
-    private Date birthdate;
+    private String birthdate;
     private String names;
     private String last_names;
     private String role;
