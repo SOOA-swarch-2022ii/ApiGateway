@@ -37,7 +37,6 @@ input SubjectInput {
     academic_level: String 
     basic_academic_unit: String 
     faculty: String 
-    level: String 
     vigency: Boolean
     campus: String 
     name: String 
@@ -171,8 +170,7 @@ type Subject {
     _id: String  
     academic_level: String 
     basic_academic_unit: String 
-    faculty: String 
-    level: String 
+    faculty: String
     vigency: Boolean
     campus: String 
     name: String 

@@ -11,7 +11,7 @@ import sooa.domain.subjects_ms.RecordStudentCourse;
 @Getter
 @Service
 public class RMQMessagingService {
-    public String student_consumer ;
+   /* public String student_consumer ;
     public String course_consumer ;
 
 
@@ -43,5 +43,5 @@ public class RMQMessagingService {
             e.printStackTrace();
         }
     }
-
+*/
 }
