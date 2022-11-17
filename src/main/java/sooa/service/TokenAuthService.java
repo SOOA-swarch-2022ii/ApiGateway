@@ -17,18 +17,18 @@ public class TokenAuthService {
     }
 
     public User registerUserService(User usuario) {
-        return rest.postForObject("http://localhost:6665/register-user",
+        return rest.postForObject("http://34.132.175.84:6665/register-user",
                 usuario, User.class);
     }
 
     public User getUserService(String username) {
-        return rest.getForObject("http://localhost:6665/user/un={username}",
+        return rest.getForObject("http://34.132.175.84:6665/user/un={username}",
                 User.class, username);
     }
 
 
     public TokenLogin loginUserService ( LoginForm loginForm) {
-        return rest.postForObject("http://localhost:6665/login",
+        return rest.postForObject("http://34.132.175.84:6665/login",
         loginForm, TokenLogin.class);
     }
 
