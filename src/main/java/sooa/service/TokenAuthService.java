@@ -17,18 +17,18 @@ public class TokenAuthService {
     }
 
     public User registerUserService(User usuario) {
-        return rest.postForObject("http://34.140.238.110:6664/register-user",
+        return rest.postForObject("http://34.140.238.110:6665/register-user",
                 usuario, User.class);
     }
 
     public User getUserService(String username) {
-        return rest.getForObject("http://34.140.238.110:6664/user/un={username}",
+        return rest.getForObject("http://34.140.238.110:6665/user/un={username}",
                 User.class, username);
     }
 
 
     public TokenLogin loginUserService ( LoginForm loginForm) {
-        return rest.postForObject("http://34.140.238.110:6664/login",
+        return rest.postForObject("http://34.140.238.110:6665/login",
         loginForm, TokenLogin.class);
     }
 }
