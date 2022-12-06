@@ -25,7 +25,7 @@ public class RegisterSubjectsProcess {
     }
 
     public Course registerStudentCourse(RecordStudentCourse recordStudentCourse) {
-        rMQMessagingService.sendSimpleMessage(recordStudentCourse);
+       // rMQMessagingService.sendSimpleMessage(recordStudentCourse);
         return registerSubjectsService.registerStudentCourse(recordStudentCourse);
     }
 

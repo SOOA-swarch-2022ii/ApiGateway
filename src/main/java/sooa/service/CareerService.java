@@ -19,30 +19,30 @@ public class CareerService {
     }
 
     public Career getCareer(int _id) {
-        return rest.getForObject("http://localhost:4445/career/{_id}",
+        return rest.getForObject("http://35.195.29.127:4445/career/{_id}",
                 Career.class, _id);
     }
 
     public List<Career> getCareers() {
-        return rest.getForObject("http://localhost:4445/career",
+        return rest.getForObject("http://35.195.29.127:4445/career",
                 List.class);
     }
 
     public Career createCareer(Career career) {
-        return rest.postForObject("http://localhost:4445/career",
+        return rest.postForObject("http://35.195.29.127:4445/career",
                 career, Career.class);
     }
     //preguntar
     public void updateDeleteCareer(int _id, String subject) {
-        rest.put("http://localhost:4445/career/delete/"+_id+"/"+ subject,null);
+        rest.put("http://35.195.29.127:4445/career/delete/"+_id+"/"+ subject,null);
     }
 
     public void updateAddCareer(int _id, String subject) {
-        rest.put("http://localhost:4445/career/add/"+_id+"/"+ subject,null);
+        rest.put("http://35.195.29.127:4445/career/add/"+_id+"/"+ subject,null);
     }
 
     public void deleteCareer(int _id) {
-        rest.delete("http://localhost:4445/career/{_id}",
+        rest.delete("http://35.195.29.127:4445/career/{_id}",
                 _id);
     }
 }

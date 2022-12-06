@@ -20,23 +20,23 @@ public class RegisterSubjectsService {
     }
 
     public Course registerStudentCourse(RecordStudentCourse recordStudentCourse){ 
-        return rest.postForObject("http://localhost:3000/register-subject/", recordStudentCourse,
+        return rest.postForObject("http://104.155.103.69:3000/register-subject/", recordStudentCourse,
                 Course.class);
     }
 
 
     public Course getCourseInfo(String course_id){
-        return rest.getForObject("http://localhost:3000/register-subject/course/{course_id} ",
+        return rest.getForObject("http://104.155.103.69:3000/register-subject/course/{course_id} ",
                 Course.class, course_id);
     }
 
     public List<SubjectCourse> getStudentCourses(String student_id){
-        return rest.getForObject("http://localhost:3000/register-subject/student/" + student_id ,
+        return rest.getForObject("http://104.155.103.69:3000/register-subject/student/" + student_id ,
         List.class);
     }
 
     public Course unregisterStudentCourse(String student_id, String course_id){
-        return rest.getForObject("http://localhost:3000/register-subject/delete/{student_id}/{course_id}", 
+        return rest.getForObject("http://104.155.103.69:3000/register-subject/delete/{student_id}/{course_id}", 
         Course.class, student_id, course_id);
     }
 

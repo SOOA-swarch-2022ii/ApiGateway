@@ -1,0 +1,240 @@
+input UserInput {
+    id: String
+    username: String
+    birthdate: String
+    names: String
+    last_names: String
+    role: String
+    password: String
+    email: String
+    phone: String
+}
+input DateInput {
+    day: String
+    month: String
+    year: String
+}
+
+input LoginInput {
+    username: String
+    password: String
+}
+
+input ScheduleInput{
+    day: String
+    start_h: String
+    end_h: String
+    location: String
+}
+
+input StudentRecordRegisterSubjectInput{
+    student: String
+    grades: [Float]
+}
+
+input SubjectInput {
+    _id: String  
+    academic_level: String 
+    basic_academic_unit: String 
+    faculty: String 
+    level: String 
+    vigency: Boolean
+    campus: String 
+    name: String 
+    code: String 
+    content: [String] 
+    credits: Int 
+    department: String 
+}
+
+input CourseInput {
+    subject: String
+    academic_semester: String
+    schedule: [ScheduleInput]
+    start_date: String
+    end_date: String
+    places: Int
+    group_number:Int
+    professors: [String]
+    students_record: [StudentRecordRegisterSubjectInput]
+}
+
+input AcademicRecordInfoInput {
+    student_id: String
+    faculty: String
+    campus: String
+    career: String
+}
+
+type User {
+    id: String
+    username: String
+    birthdate: String
+    names: String
+    last_names: String
+    role: String
+    password: String
+    email: String
+    phone: String
+}
+type Date {
+    day: String
+    month: String
+    year: String
+}
+type TokenLogin{
+    user: String
+    token: String
+    creation: String
+    expires: String
+}
+
+type AcademicRecordInfo {
+    id: ID!
+    student_id: String
+    subjects_pending : String
+    subjects_record : String
+    papa : Float
+    papi : Float
+    status : Boolean
+    faculty: String
+    campus: String
+    career: String
+}
+
+type Career {
+    _id : Int   
+    academic_level : String
+    name : String
+    SNIES_code : Int   
+    credits : Int   
+    departament : String
+    faculty : String
+    campus : String
+    pensum : [String] 
+}
+
+input CareerInput{
+    _id : Int   
+    academic_level : String
+    name : String
+    SNIES_code : Int   
+    credits : Int   
+    departament : String
+    faculty : String
+    campus : String
+    pensum : [String] 
+}
+
+type StudentRecord {
+    _id : String 
+    student : String 
+    grades : [Float]
+}
+
+type StudentsRecords {
+    _id : String
+    students_record: [StudentRecord]
+}
+
+input RecordStudentCourse {
+    student_id: String
+    course_id: String
+}
+
+type Schedule{
+    day: String
+    start_h: String
+    end_h: String
+    location: String
+}
+
+type StudentRecordRegisterSubject{
+    student: String
+    grades: [Float]
+}
+
+type Course {
+    _id: String   
+    subject: String
+    academic_semester: String
+    schedule: [Schedule] 
+    start_date: String   
+    end_date: String
+    places: Int
+    group_number:Int
+    professors: [String]
+    students_record: [StudentRecordRegisterSubject]
+}
+
+type Subject {
+    _id: String  
+    academic_level: String 
+    basic_academic_unit: String 
+    faculty: String 
+    level: String 
+    vigency: Boolean
+    campus: String 
+    name: String 
+    code: String 
+    content: [String] 
+    credits: Int 
+    department: String 
+}
+
+type SubjectCourse {
+    course: Course   
+    subject: Subject
+}
+
+type Query {
+   
+    getUser(username: String!): User
+    getCareers: [Career]
+    getCareer(_id : Int): Career
+
+    getGrade(id: String): StudentsRecords
+    getGradeCourse(subject: String, group: Int): StudentsRecords
+    getGrades: [StudentsRecords]
+
+    findAllAcademicRecords: [AcademicRecordInfo]
+    findAcademicRecord(student_id: String): AcademicRecordInfo
+
+    findOneCourse(course_id: String): Course
+    findCoursesByStudent(student_id: String): [SubjectCourse]
+
+    getSubjectById(id: ID!): Subject
+    getSubjectByName(name: String!): Subject
+    getSubjectByCode(code: String!): Subject
+
+    getCourseById(id: ID!): Course
+    getCoursesBySubject(subject: String!): [Course]
+    getCoursesByStudent(student: String!): [Course]
+    getCoursesByStudentSem(student: String!, semester: String!): [Course]
+    getCoursesByProfe(profe: String!): [Course]
+}
+
+
+type Mutation {
+    registerUser(userInput: UserInput, academicRecordInfoInput: AcademicRecordInfoInput): User
+    getUser(username: String!): User
+    login(loginForm: LoginInput!): TokenLogin
+
+    createCareer(input: CareerInput): Career
+    updateDeleteCareer(_id : Int, subject: String): Career
+    updateAddCareer(_id : Int, subject: String): Career
+    deleteCareer(_id: Int): Career
+
+    updateGradeId(id: String, student: String, grade: Float): StudentRecord
+    updateGradeCourse(subject: String, group: Int, student: String, grade: Float): StudentRecord
+    deleteGradeId(id:String, student: String, grade: Float): StudentRecord
+    deleteGradeCourse(subject: String, group: Int, student: String, grade: Float): StudentRecord
+
+    updateAcademicRecord(studentId: String): AcademicRecordInfo
+    deleteAcademicRecord(studentId: String): AcademicRecordInfo
+
+    createCourse(courseInput: CourseInput): Course
+    createSubject(subjectInput: SubjectInput): Subject
+    registerStudentCourse(recordStudentCourse: RecordStudentCourse): Course
+    unregisterStudentCourse(student_id: String, course_id: String): Course
+}
